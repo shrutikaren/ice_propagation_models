@@ -1,0 +1,3 @@
+[submodule "PhysiCell_Cryo_New"]
+	path = PhysiCell_Cryo_New
+	url = git@github.com:faamiri23/PhysiCell_Cryo.git
