@@ -31,15 +31,12 @@ Currently, it includes pathology, MultiCellDS, and SVG (scalable vector graphic)
 PhysiCell should successfully compile and run on any C++11 or later compiler that supports OpenMP.
 I use g++ on Linux.
 
-#-------------------------------------------------------------------------------------------------
 To compile and run the code:
-#-------------------------------------------------------------------------------------------------
 1) make data-cleanup
 2) make reset 
 3) make hepatocyte-sample
 4) make
 5) ./hepatocyte-cryopreservation
-#-------------------------------------------------------------------------------------------------
 
 My 3 main code files are: "hepatocyte-cryopreservation.cpp", "hepatocyte-cryopreservation.h" and "main.cpp".  
 The "hepatocyte-cryopreservation.cpp" and "hepatocyte-cryopreservation.h" are located in /Codes/PhysiCell/custom_modules
