@@ -5,9 +5,11 @@ There are a few things actually:
 - Could we try and make a python code utilising the two parameter model or Mazur's Temperature Dependent Model? 
 - Could we implement the Monte Carlo simulation that the paper discusses? 
 - Can we briefly discuss on how can we calculate tau and averaging them as connections break? - what literature would you suggest on this?
-- On PhysicCell, we have the custom code and the idea is when we get a value of tau, how can I make sure that the next tau is based off of the previous tau value ? - I can share the code on this one with you on my GitHub but first, I wanted to make sure that you think this is something you could help me with. We would have to utilise parallelism with C++ and I am in the works of learning this too
 
-- Notes from the previous Master's student:
+# Notes from current undergraduate student working on the code:
+This ice_propagation_models directory covers all files from fatima's repository copied here and a directory named Temp_Model to store "Mazur's Temperature Dependent Model". There is one more directory called Notes that will store all my literature reviews, presentation slides with Joseph and important thoughts that I might have along the way of this research project. 
+
+# Notes from the previous Master's student:
 This code implementes Gillespie (Monte-Carlo) model of ice formation and propagation in hepatocyte disks monolayer of 22 cells tissue, using  PhysiCell http://physicell.org/.
 PhysiCell was structured in several critical subdirectories. Here we use the following subdirectories:
 
