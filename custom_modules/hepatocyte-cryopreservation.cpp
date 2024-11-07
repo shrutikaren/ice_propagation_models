@@ -387,9 +387,9 @@ std::vector<std::string> follicle_coloring_function( Cell* pCell )
     // If the cells are frozen change the color to blue
 	if( pCell->state.ice_state==1 )
 	{
-		output[0] = "blue"; // 
-		output[1] = "blue"; // 
-		output[2] = "blue"; // 
+		output[0] = "green"; // 
+		output[1] = "green"; // 
+		output[2] = "green"; // 
 		
 		colored_cell_list.push_back(pCell);
 		return output;
