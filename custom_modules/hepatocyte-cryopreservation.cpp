@@ -552,7 +552,11 @@ void dimensionless_time_NoCPA(Cell* pCell, Phenotype& phenotype, double dt )
     double Int_het=0.0;
 
     double tau_T =(T_f/T_f0)*(T_f/T_f0)*(T_f/T_f0)*(T_f/T_f0);
-	
+    
+    /* Code that was added */    
+    double tau_count = 0;
+    double tau_sum = 0;
+    
     double Area=pCell->custom_data["Area"];
 
 
@@ -562,6 +566,11 @@ void dimensionless_time_NoCPA(Cell* pCell, Phenotype& phenotype, double dt )
         double eta = std::pow((((Tseed-B*k*h)/225)-1), 41.0/25);
         
         double J_het_kh    = omega*(eta/eta_0)*sqrt((Tseed-B*k*h)/T_f0)*exp(-kapa/((Tseed-B*k*h)*(Tseed-B*k*h)*(Tseed-B*k*h)*(T_f-(Tseed-B*k*h))*(T_f-(Tseed-B*k*h)))*(tau_T));
+
+	/* Still rethinking if this would be the best approach */	
+	double tau_T = std::pow((T_f / T_f0), 4);
+        tau_sum += tau_T;
+        tau_count++;
 
         if (k==0 || k==n-1)
         {
@@ -574,9 +583,10 @@ void dimensionless_time_NoCPA(Cell* pCell, Phenotype& phenotype, double dt )
 
         }
     }
-   
-    pCell->custom_data["tau_t"] = Int_het*Area;
     
+    double average_tau  = tau_sum / tau_count;
+    pCell->custom_data["tau_t"] = Int_het*Area;
+    pCell->custom_data["average_tau_T"] = average_tau;
     
     return;
 }
