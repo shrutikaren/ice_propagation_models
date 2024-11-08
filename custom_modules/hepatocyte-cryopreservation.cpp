@@ -25,6 +25,9 @@ Discription        : This file uses rat hepatocyte parameters and
 #include <fstream>
 #include <iostream>
 #include <cstdlib>
+#include <vector>
+#include <unordered_map>
+
 // Global Variables
 #define PI 3.14159265
 #define sgn(v) ( ( (v) < 0 ) ? -1 : ( (v) > 0 ) )
