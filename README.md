@@ -2,9 +2,9 @@
 Utilising a Master's degree student code and further exemplifying it to be able to produce more accurate picture of those frozen cells by making use of the parameter "Tau" in our equations.
 
 There are a few things actually: 
-- Could we try and make a python code utilising the two parameter model or Mazur's Temperature Dependent Model? 
-- Could we implement the Monte Carlo simulation that the paper discusses? 
-- Can we briefly discuss on how can we calculate tau and averaging them as connections break? - what literature would you suggest on this?
+- A python code utilising the two parameter model or Mazur's Temperature Dependent Model
+- Work on the Monte Carlo simulation that the paper discusses
+- Discuss on how can we calculate tau and averaging them as connections break - Look at the neighbours of each cell and if those connections break then we want to calculate the Tau value for those 
 
 # Notes from current undergraduate student working on the code:
 This ice_propagation_models directory covers all files from fatima's repository copied here and a directory named Temp_Model to store "Mazur's Temperature Dependent Model". There is one more directory called Notes that will store all my literature reviews, presentation slides with Joseph and important thoughts that I might have along the way of this research project. 
