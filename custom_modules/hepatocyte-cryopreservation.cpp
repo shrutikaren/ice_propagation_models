@@ -627,6 +627,16 @@ double distance_between(Cell* pCell_1,Cell* pCell_2)
 
 	return neighbors_index;
 }
+// Helper function to look for any form of broken connections 
+bool connectionsbroken(Cell *pCell, const std::vector<int> &neighbours){
+	for (int i: neighbours){
+		Cell *neighbour = (*all_cells)[i]
+		if distance_between(pCell, neighbour) > 2{
+			return true;
+		}
+	}
+	return false;
+}
 
 // Monte-Carlo and Gillespie are stochastics models to determine the 
 // probability of each state (number of frozen and unfrozen cells in a tissue) 
