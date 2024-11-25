@@ -133,6 +133,13 @@ void create_hepatocyte_cell_type(void)
     hepatocyte_cell.custom_data.add_variable("knew", "unitless", 0);
     hepatocyte_cell.custom_data.add_variable("Freezing_time", "unitless", 0.0);
 
+/*
+    hepatocyte_cell.custom_data.add_variable("is_broken_connection", "bool", false);
+    hepatocyte_cell.custom_data.add_variable("tau_avg", "unitless", 0.0);
+ 		
+*/
+
+
 	return;
 }
 void create_cell_types( void )
@@ -439,6 +446,33 @@ void hepatocyte_cell_rule( Cell* pCell, Phenotype& phenotype, double dt )
          ofs.close(); 
      }
  }
+
+/*
+	//Check for broken connections and update tau.
+	vector<int> neighbor = populate_my_neighborhood(pCell);
+	
+	if(connectionsbroken(pCell, neighbor)){
+
+		double tau_sum = 0.0;
+		int counter = 0;
+		
+		for(int index : neighbot_indices){
+			Cell* neighbor = (*all_cells)[index];
+			tau_sum += neighbor->cusom_data["tau-t"];
+			count++;
+		}
+		double average_tau .....
+
+		// Log the broken connections
+		pCell->custom_data["is_broken_connection"] = true;
+	}
+
+	else{
+		pCell->custom_data["is_broken_connection"] = false;
+
+	}
+*/
+
  //Update the position of the cell as it loses water or freezes
  pCell->update_position(dt); 
 	return;
@@ -595,6 +629,7 @@ void dimensionless_time_NoCPA(Cell* pCell, Phenotype& phenotype, double dt )
 //mechanics functions:
 
 //calculates absolute distance between the centers of two cells uses norm from biofvm
+
 double distance_between(Cell* pCell_1,Cell* pCell_2)
 {
 	static double distance_between_cells=0.0;
@@ -630,8 +665,8 @@ double distance_between(Cell* pCell_1,Cell* pCell_2)
 // Helper function to look for any form of broken connections 
 bool connectionsbroken(Cell *pCell, const std::vector<int> &neighbours){
 	for (int i: neighbours){
-		Cell *neighbour = (*all_cells)[i]
-		if distance_between(pCell, neighbour) > 2{
+		Cell *neighbour = (*all_cells)[i];
+		if (distance_between(pCell, neighbour) > 2){
 			return true;
 		}
 	}
