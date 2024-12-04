@@ -714,7 +714,8 @@ void Gillespie_Model(void)
             ofs << time<<std::endl;
             ofs.close();
          }
-		    // loop over the number of cells and find the neighbors for each cell
+	    ofs.open("output/Cellnumber_and_stateoftheirneighbours.txt", std::ofstream::out | std::ofstream::app);
+	    // loop over the number of cells and find the neighbors for each cell
             for (int i=0;i<number_of_cells;i++)
             {
                 Cell* pCell = (*all_cells)[i];                         
@@ -725,13 +726,16 @@ void Gillespie_Model(void)
 
                 for(int j=0; j< neighbor_index.size();j++)
                 {
+ 		    //ofs << i << " " << pCell_3 << " " << j << std::endl;
+
                     Cell* pCell_3 = (*all_cells)[neighbor_index[j]];
-                    z+= pCell_3->custom_data["fvecold"];
+                    ofs << i << " " << pCell_3 << " " << j << std::endl;
+		    z+= pCell_3->custom_data["fvecold"];
                     
                 }
 
                 pCell->custom_data["knew"] = z;
-
+		ofs.close();
             }
 
             a0 = 0;
