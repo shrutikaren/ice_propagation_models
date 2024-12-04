@@ -730,9 +730,9 @@ void Gillespie_Model(void)
  		    //ofs << i << " " << pCell_3 << " " << j << std::endl;
 
                     Cell* pCell_3 = (*all_cells)[neighbor_index[j]];
-
+		    double distance = distance_between(pCell, pCell_3);
                     // Way to check if the connections between the cells are broken or not 
-		    ofs << i << " " << pCell_3 << " " << j << " " << connection << std::endl;
+		    ofs << i << " " << pCell_3 << " " << j << " " << connection << distance << std::endl;
 		    z+= pCell_3->custom_data["fvecold"];
                     
                 }
