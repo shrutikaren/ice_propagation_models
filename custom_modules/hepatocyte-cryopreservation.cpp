@@ -703,6 +703,8 @@ void Gillespie_Model(void)
 	//The uniform distribution on the interval(0,1)
     std::uniform_real_distribution<> dis(0.0, 1.0);
     ofs.open("output/beforefrozen_Cellnumber_and_stateoftheirneighbours.txt", std::ofstream::out | std::ofstream::app);	    	
+    
+
     while( time < max_time)
     {
         if (a0>0)
@@ -791,10 +793,35 @@ void Gillespie_Model(void)
                     
                 }
             }
+	// ofs.open("output/afterfrozen_Cellnumber_and_stateoftheirneighbours.txt", std::ofstream::out | std::ofstream::app);	  
+
         // if a0=0, then all the cells are frozen
         if (a0==0)
         {
-            return;
+	   
+    	   ofs.open("output/afterfrozen_Cellnumber_and_stateoftheirneighbours.txt", std::ofstream::out | std::ofstream::app);	    	
+           // If all the cells are frozen, we are interested in looking at the distances between
+           // the cell and their neighboring cell 
+		for (int i=0;i<number_of_cells;i++) {
+                	Cell* pCell_frozen = (*all_cells)[i];                         
+                
+                	//
+                	std::vector<int> neighbor_index_frozen = populate_my_neighborhood(pCell_frozen);
+               		z=0;
+			bool connection_frozen = connectionsbroken(pCell_frozen, neighbor_index_frozen);
+
+                	for(int j=0; j< neighbor_index_frozen.size();j++) {
+ 		    	//ofs << i << " " << pCell_3 << " " << j << std::endl;
+
+                    	Cell* pCell_3_frozen = (*all_cells)[neighbor_index_frozen[j]];
+		    	double distance_frozen = distance_between(pCell_frozen, pCell_3_frozen);
+                    	// Way to check if the connections between the cells are broken or not 
+		    	ofs << "Current cell:" << i << ", Neighboring Cell:  " << pCell_3_frozen << ", Iteration_Number:  " << j << ", Connection_broken:  " << connection_frozen << ", Distance: " << distance_frozen  << std::endl;
+		    	z+= pCell_3_frozen->custom_data["fvecold"];
+        		}
+		}            
+		ofs.close();
+	   return;
         }
         else
         {
