@@ -740,7 +740,7 @@ void Gillespie_Model(void)
                 pCell->custom_data["knew"] = z;
 		
             }
-`
+
 	    ofs.close();
             a0 = 0;
 
