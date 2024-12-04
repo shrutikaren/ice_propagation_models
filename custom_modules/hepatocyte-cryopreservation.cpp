@@ -738,9 +738,10 @@ void Gillespie_Model(void)
                 }
 
                 pCell->custom_data["knew"] = z;
-		ofs.close();
+		
             }
-
+`
+	    ofs.close();
             a0 = 0;
 
             for (int i=0;i<number_of_cells;i++)
