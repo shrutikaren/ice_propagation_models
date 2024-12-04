@@ -723,13 +723,16 @@ void Gillespie_Model(void)
                 //
                 std::vector<int> neighbor_index = populate_my_neighborhood(pCell);
                 z=0;
+		bool connection = connectionsbroken(pCell, neighbor_index);
 
                 for(int j=0; j< neighbor_index.size();j++)
                 {
  		    //ofs << i << " " << pCell_3 << " " << j << std::endl;
 
                     Cell* pCell_3 = (*all_cells)[neighbor_index[j]];
-                    ofs << i << " " << pCell_3 << " " << j << std::endl;
+
+                    // Way to check if the connections between the cells are broken or not 
+		    ofs << i << " " << pCell_3 << " " << j << " " << connection << std::endl;
 		    z+= pCell_3->custom_data["fvecold"];
                     
                 }
