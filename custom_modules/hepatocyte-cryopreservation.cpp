@@ -666,6 +666,7 @@ double distance_between(Cell* pCell_1,Cell* pCell_2)
 bool connectionsbroken(Cell *pCell, const std::vector<int> &neighbours){
 	for (int i: neighbours){
 		Cell *neighbour = (*all_cells)[i];
+		// This is where we want to fit the model to figure it out
 		if (distance_between(pCell, neighbour) > 2){
 			return true;
 		}
@@ -681,7 +682,7 @@ void Gillespie_Model(void)
     std::ofstream ofs;
 	//Number of cells in the tissue
     int number_of_cells = (*all_cells).size();
-    double r [2]  ; 
+    double r [2]  ; // The two random variables that we will require 
     r [0]=0 ,  r [1]=0;
 	//Non-dimensional ice propagtion rate alpha=Jp/Ji
     double alpha =10.4;
