@@ -702,7 +702,7 @@ void Gillespie_Model(void)
     std::mt19937 gen(rd()); 
 	//The uniform distribution on the interval(0,1)
     std::uniform_real_distribution<> dis(0.0, 1.0);
-	
+    ofs.open("output/beforefrozen_Cellnumber_and_stateoftheirneighbours.txt", std::ofstream::out | std::ofstream::app);	    	
     while( time < max_time)
     {
         if (a0>0)
@@ -714,7 +714,6 @@ void Gillespie_Model(void)
             ofs << time<<std::endl;
             ofs.close();
          }
-	    ofs.open("output/Cellnumber_and_stateoftheirneighbours.txt", std::ofstream::out | std::ofstream::app);
 	    // loop over the number of cells and find the neighbors for each cell
             for (int i=0;i<number_of_cells;i++)
             {
@@ -732,7 +731,7 @@ void Gillespie_Model(void)
                     Cell* pCell_3 = (*all_cells)[neighbor_index[j]];
 		    double distance = distance_between(pCell, pCell_3);
                     // Way to check if the connections between the cells are broken or not 
-		    ofs << i << " " << pCell_3 << " " << j << " " << connection << distance << std::endl;
+		    ofs << "Current cell:" << i << ", Neighboring Cell:  " << pCell_3 << ", Iteration_Number:  " << j << ", Connection_broken:  " << connection << ", Distance: " << distance << std::endl;
 		    z+= pCell_3->custom_data["fvecold"];
                     
                 }
@@ -740,7 +739,6 @@ void Gillespie_Model(void)
                 pCell->custom_data["knew"] = z;
 		
             }
-
 	    ofs.close();
             a0 = 0;
 
