@@ -5,7 +5,7 @@ fuser -k ./output
 rm -rf output_simulations
 
 # This is the number of times that we want to be able to run our simulations.
-SIMULATION_NUMBER=2
+SIMULATION_NUMBER=1000
 FILE_NUMBER=89
 make data-cleanup
 make reset 
@@ -39,18 +39,24 @@ run_simulation(){
 	#cp -rf output/*.* "$SIM_DIR/".
 
 	cp -rf output/afterfrozen_Cellnumber_and_stateoftheirneighbours.txt "$SIM_DIR/".
-}
-	#cp -rf output/beforefrozen_Cellnumber_and_stateoftheirneighbours.txt "$SIM_DIR/".
-	#cp -rf output/final.svg "$SIM_DIR/".
-	#cp -rf output/final.xml "$SIM_DIR/".
-	#cp -rf output/Gillespie_alpha10_rathepatocyte_22ncell_B400.txt "$SIM_DIR/".
-	#cp -rf output/initial.svg "$SIM_DIR/".
-	#cp -rf output/initial.xml "$SIM_DIR/".
-	#cp -rf output/rat_hepatocyte_22cells_B400.txt "$SIM_DIR/".
-	#cp -rf output/rathepatocyte_freezing_time_B400.txt "$SIM_DIR/".
-	#cp -rf output/rat_hepatocyte_Tau_22cells_B400.txt "$SIM_DIR/".
-	#cp -rf output/snapshot*.svg "$SIM_DIR/".
-	#cp -rf output/temp_points.csv "$SIM_DIR/".
-#} 
+	cp -rf output/beforefrozen_Cellnumber_and_stateoftheirneighbours.txt "$SIM_DIR/".
+	cp -rf output/final.svg "$SIM_DIR/".
+	cp -rf output/final.xml "$SIM_DIR/".
+	cp -rf output/Gillespie_alpha10_rathepatocyte_22ncell_B400.txt "$SIM_DIR/".
+	cp -rf output/initial.svg "$SIM_DIR/".
+	cp -rf output/initial.xml "$SIM_DIR/".
+	cp -rf output/rat_hepatocyte_22cells_B400.txt "$SIM_DIR/".
+	cp -rf output/rathepatocyte_freezing_time_B400.txt "$SIM_DIR/".
+	cp -rf output/rat_hepatocyte_Tau_22cells_B400.txt "$SIM_DIR/".
+	cp -rf output/snapshot*.svg "$SIM_DIR/".
+	cp -rf output/temp_points.csv "$SIM_DIR/".
+} 
 export -f run_simulation
 seq 1 $SIMULATION_NUMBER | xargs -P 4 -I {} bash -c 'run_simulation "$@"' _ {}
+
+# Once the simulation is done, one for-loop is ran here to go through all of those 
+# simulation folders and add them into one GIANT folder called output_simulations 
+for i in $(seq 1 $SIMULATION_NUMBER); do
+	cp -rf ./simulation_${i} ./output_simulations/.
+	rm -rf ./simulation_${i}
+done
