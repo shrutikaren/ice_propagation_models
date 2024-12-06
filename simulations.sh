@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This is the number of times that we want to be able to run our simulations.
-SIMULATION_NUMBER = 100
+SIMULATION_NUMBER=100
 
 # To store all of the resulting files from our simulations, we want to be able 
 # to have a directory where we can store everything.
