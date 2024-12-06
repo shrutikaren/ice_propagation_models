@@ -5,7 +5,7 @@ fuser -k ./output
 rm -rf output_simulations
 
 # This is the number of times that we want to be able to run our simulations.
-SIMULATION_NUMBER=1000
+SIMULATION_NUMBER=100
 FILE_NUMBER=89
 make data-cleanup
 make reset 
