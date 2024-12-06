@@ -9,12 +9,12 @@ SIMULATION_NUMBER=2
 FILE_NUMBER=89
 make data-cleanup
 make reset 
+ 
 
 # To store all of the resulting files from our simulations, we want to be able 
 # to have a directory where we can store everything.
 OUTPUT_DIR="./output_simulations" 
 mkdir -p "$OUTPUT_DIR"
-
 run_simulation(){
 	fuser -k ./output 
 	local i=$1 # First argument of the function is taken
@@ -24,7 +24,7 @@ run_simulation(){
 	# subdirectory to store all of the resulting simulation output files
 	# and have a number to associate the simulation number with the file
 	# number. 
-	SIM_DIR="$OUTPUT_DIR/simulation_${i}"
+	SIM_DIR="./simulation_${i}"
 	mkdir -p "$SIM_DIR" && echo "Directory created: $SIM_DIR" || { echo "Failed to create $SIM_DIR"; exit 1; }
 	
 	# Note that now we are inside the OUTPUTDIR/simulation_[iteration]
