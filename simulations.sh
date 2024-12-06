@@ -5,7 +5,7 @@ SIMULATION_NUMBER = 100
 
 # To store all of the resulting files from our simulations, we want to be able 
 # to have a directory where we can store everything.
-OUTPUT_DIR="outputted_simulations" 
+OUTPUT_DIR="output_simulations" 
 mkdir -p "$OUTPUT_DIR"
 
 for i in $(seq 1 $SIMULATION_NUMBER); do
@@ -17,7 +17,8 @@ for i in $(seq 1 $SIMULATION_NUMBER); do
 	# and have a number to associate the simulation number with the file
 	# number. 
 	SIM_DIR = "$OUTPUT_DIR/simulation_$i"
-	mkdir -p "SIM_DIR"
+	mkdir -p "$SIM_DIR"
+	echo "Opening a subdirectory inside output for simulation_$i"
 
 	# Note that now we are inside the OUTPUTDIR/simulation_[iteration]
 	# After the directories are made, we want to be able to go through our 
@@ -28,18 +29,18 @@ for i in $(seq 1 $SIMULATION_NUMBER); do
 	make 
 	./hepatocyte-cryopreservation 
 
-	mv output/afterfrozen_Cellnumber_and_stateoftheirneighbours.txt "$SIM_DIR/"
-	mv output/beforefrozen_Cellnumber_and_stateoftheirneighbours.txt "$SIM_DIR/"
-	mv output/final.svg "$SIM_DIR/"
-	mv output/final.xml "$SIM_DIR/"
-	mv output/Gillespie_alpha10_rathepatocyte_22ncell_B400.txt "$SIM_DIR/"
-	mv output/initial.svg "$SIM_DIR/"
-	mv output/initial.xml "$SIM_DIR/"
-	mv output/rat_hepatocyte_22cells_B400.txt "$SIM_DIR/"
-	mv output/rathepatocyte_freezing_time_B400.txt "$SIM_DIR/"
-	mv output/rat_hepatocyte_Tau_22cells_B400.txt "$SIM_DIR/"
-	mv output/snapshot*.svg "$SIM_DIR/"
-	mv output/temp_points.csv "$SIM_DIR/"
+	#mv output/afterfrozen_Cellnumber_and_stateoftheirneighbours.txt "$SIM_DIR/"/afterfrozen_Cellnumber_and_stateoftheirneighbours.txt
+	#mv output/beforefrozen_Cellnumber_and_stateoftheirneighbours.txt "$SIM_DIR/"
+	#mv output/final.svg "$SIM_DIR/"
+	#mv output/final.xml "$SIM_DIR/"
+	#mv output/Gillespie_alpha10_rathepatocyte_22ncell_B400.txt "$SIM_DIR/"
+	#mv output/initial.svg "$SIM_DIR/"
+	#mv output/initial.xml "$SIM_DIR/"
+	#mv output/rat_hepatocyte_22cells_B400.txt "$SIM_DIR/"
+	#mv output/rathepatocyte_freezing_time_B400.txt "$SIM_DIR/"
+	#mv output/rat_hepatocyte_Tau_22cells_B400.txt "$SIM_DIR/"
+	#mv output/snapshot*.svg "$SIM_DIR/"
+	#mv output/temp_points.csv "$SIM_DIR/"
 done
 
 echo "Officially completed all the simulations, exiting now..."
