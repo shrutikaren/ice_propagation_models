@@ -1,13 +1,7 @@
 #!/bin/bash
 
-# Deals with the resource or device busy problem
-fuser -k ./output
-
 # This is the number of times that we want to be able to run our simulations.
 SIMULATION_NUMBER=5
-FILE_NUMBER=89
-make data-cleanup
-make reset 
 
 # To store all of the resulting files from our simulations, we want to be able 
 # to have a directory where we can store everything.
@@ -22,7 +16,7 @@ for i in $(seq 1 $SIMULATION_NUMBER); do
 	# subdirectory to store all of the resulting simulation output files
 	# and have a number to associate the simulation number with the file
 	# number. 
-	SIM_DIR="$OUTPUT_DIR/simulation_$i"
+	SIM_DIR = "$OUTPUT_DIR/simulation_$i"
 	mkdir -p "$SIM_DIR"
 	echo "Opening a subdirectory inside output for simulation_$i"
 
@@ -36,23 +30,17 @@ for i in $(seq 1 $SIMULATION_NUMBER); do
 	./hepatocyte-cryopreservation 
 
 	cp -rf output/afterfrozen_Cellnumber_and_stateoftheirneighbours.txt "$SIM_DIR/".
-	cp -rf output/beforefrozen_Cellnumber_and_stateoftheirneighbours.txt "$SIM_DIR/".
-	cp -rf output/final.svg "$SIM_DIR/".
-	cp -rf output/final.xml "$SIM_DIR/".
-	cp -rf output/Gillespie_alpha10_rathepatocyte_22ncell_B400.txt "$SIM_DIR/".
-	cp -rf output/initial.svg "$SIM_DIR/".
-	cp -rf output/initial.xml "$SIM_DIR/".
-	cp -rf output/rat_hepatocyte_22cells_B400.txt "$SIM_DIR/".
-	cp -rf output/rathepatocyte_freezing_time_B400.txt "$SIM_DIR/".
-	cp -rf output/rat_hepatocyte_Tau_22cells_B400.txt "$SIM_DIR/".
-	cp -rf output/snapshot*.svg "$SIM_DIR/".
-	cp -rf output/temp_points.csv "$SIM_DIR/".
-	
-	# This part of the for-loop is to deal with the iteration of the snapshot
-	# image files - We want to ensure that we are able to go from 0 to 89th 
-	# image file and copy them to their respective simulation numbered folder
-	for i in $(seq 0 $FILE_NUMBER); do
-		cp -rf output/snapshot000000"$i".svg "$SIM_DIR/".
+	#mv output/beforefrozen_Cellnumber_and_stateoftheirneighbours.txt "$SIM_DIR/"
+	#mv output/final.svg "$SIM_DIR/"
+	#mv output/final.xml "$SIM_DIR/"
+	#mv output/Gillespie_alpha10_rathepatocyte_22ncell_B400.txt "$SIM_DIR/"
+	#mv output/initial.svg "$SIM_DIR/"
+	#mv output/initial.xml "$SIM_DIR/"
+	#mv output/rat_hepatocyte_22cells_B400.txt "$SIM_DIR/"
+	#mv output/rathepatocyte_freezing_time_B400.txt "$SIM_DIR/"
+	#mv output/rat_hepatocyte_Tau_22cells_B400.txt "$SIM_DIR/"
+	#mv output/snapshot*.svg "$SIM_DIR/"
+	#mv output/temp_points.csv "$SIM_DIR/"
 done
 
 echo "Officially completed all the simulations, exiting now..."
