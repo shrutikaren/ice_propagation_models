@@ -15,7 +15,6 @@ OUTPUT_DIR="output_simulations"
 mkdir -p "$OUTPUT_DIR"
 
 for i in $(seq 1 $SIMULATION_NUMBER); do
-	fuser -k ./output 
 	# Proof that we got into the for-loop and the simulation is running. 
 	echo "Running simulation $i, please wait ..."
 
@@ -53,7 +52,7 @@ for i in $(seq 1 $SIMULATION_NUMBER); do
 	# image files - We want to ensure that we are able to go from 0 to 89th 
 	# image file and copy them to their respective simulation numbered folder
 	for i in $(seq 0 $FILE_NUMBER); do
-		PADDED_NUMBER=$(printf "%02d" $i) # 00, 01, 02 ... 89
+		PADDED_NUMBER = $(printf "%02d" $i) # 00, 01, 02 ... 89
 		cp -rf output/snapshot000000${PADDED_NUMBER}.svg "$SIM_DIR/".
 	done 
 done
