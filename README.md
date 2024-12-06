@@ -9,6 +9,22 @@ There are a few things actually:
 # Notes from current undergraduate student working on the code:
 This ice_propagation_models directory covers all files from fatima's repository copied here and a directory named Temp_Model to store "Mazur's Temperature Dependent Model". There is one more directory called Notes that will store all my literature reviews, presentation slides with Joseph and important thoughts that I might have along the way of this research project. 
 
+Now instead of doing this as mentioned below: 
+To compile and run the code:
+1) make data-cleanup
+2) make reset 
+3) make hepatocyte-sample
+4) make
+5) ./hepatocyte-cryopreservation
+
+
+If you want to run simulations, please utilize either the parallel.sh or the simulations.sh files. parallel.sh is recommended as it runs the simulations in parallel and it is much efficient. To prevent race conditions, the structure is designed in the way that all the folders are created first and then they are thrown into the output_simulations/ folder. Currently, it is set for 100 simulations. For an alternative number of simulations, please simply change the number in the variable of the bash file. 
+
+To run the simulations:
+1. ./parallel.sh
+
+Notice how, it produces multiple output files at once now and you don't need to worry about memorizing multiple lines of build since they are all done with just one line of code and the simulations are automated with your bash file. 
+
 # Notes from the previous Master's student:
 This code implementes Gillespie (Monte-Carlo) model of ice formation and propagation in hepatocyte disks monolayer of 22 cells tissue, using  PhysiCell http://physicell.org/.
 PhysiCell was structured in several critical subdirectories. Here we use the following subdirectories:
