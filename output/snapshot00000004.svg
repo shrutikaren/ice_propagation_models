@@ -65,12 +65,12 @@
   <circle cx="211.683" cy="231.845" r="6.35031" stroke-width="0.5" stroke="red" fill="red"/>
    </g>
    <g id="cell10">
-  <circle cx="223.99" cy="283.531" r="10.5754" stroke-width="0.5" stroke="red" fill="red"/>
-  <circle cx="223.99" cy="283.531" r="6.35031" stroke-width="0.5" stroke="red" fill="red"/>
+  <circle cx="223.989" cy="283.53" r="10.5754" stroke-width="0.5" stroke="red" fill="red"/>
+  <circle cx="223.989" cy="283.53" r="6.35031" stroke-width="0.5" stroke="red" fill="red"/>
    </g>
    <g id="cell11">
-  <circle cx="276.838" cy="282.832" r="10.5754" stroke-width="0.5" stroke="red" fill="red"/>
-  <circle cx="276.838" cy="282.832" r="6.35031" stroke-width="0.5" stroke="red" fill="red"/>
+  <circle cx="276.837" cy="282.833" r="10.5754" stroke-width="0.5" stroke="red" fill="red"/>
+  <circle cx="276.837" cy="282.833" r="6.35031" stroke-width="0.5" stroke="red" fill="red"/>
    </g>
    <g id="cell12">
   <circle cx="287.906" cy="231.002" r="10.5754" stroke-width="0.5" stroke="red" fill="red"/>
@@ -121,7 +121,7 @@
   </text>
   <text x="12.5" y="522.5"
    font-family="Arial" font-size="9.375" fill="black" >
-   0 days, 0 hours, 0 minutes, and 0.2207 seconds
+   0 days, 0 hours, 0 minutes, and 0.1523 seconds
   </text>
   <rect x="0" y="35" width="500" height="500" stroke-width="1" stroke="rgb(0,0,0)" fill="none"/>
 </svg>
