@@ -679,7 +679,7 @@ bool connectionsbroken(Cell *pCell, const std::vector<int> &neighbours){
 //as a function of dimensionless time. 
 void Gillespie_Model(void)
 {
-    std::ofstream ofs;
+    std::ofstream ofs, freezing_times;
 	//Number of cells in the tissue
     int number_of_cells = (*all_cells).size();
     double r [2]  ; // The two random variables that we will require 
@@ -773,7 +773,7 @@ void Gillespie_Model(void)
                 
             }
 
-	    ofs.open("output/freezing_times_alpha" + std::to_string(alpha) + ".txt"); 
+	    freezing_times.open("output/freezing_times_alpha" + std::to_string(alpha) + ".txt"); 
             
             for (int j=0;j<number_of_cells;j++)
             { 
@@ -785,14 +785,14 @@ void Gillespie_Model(void)
                   
                     if (a0>0){
 			pCell_2->custom_data["Freezing_time"]=time-(log(r[0])/a0); 
-			ofs << pCell_2->custom_data["Freezing_time"] << std::endl;
+			freezing_times << pCell_2->custom_data["Freezing_time"] << std::endl;
                     }
                     break;
                     
                     
                 }
             }
-	    ofs.close();
+	    freezing_times.close();
 	// ofs.open("output/afterfrozen_Cellnumber_and_stateoftheirneighbours.txt", std::ofstream::out | std::ofstream::app);	  
 
         // if a0=0, then all the cells are frozen
