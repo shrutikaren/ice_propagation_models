@@ -704,7 +704,6 @@ void Gillespie_Model(void)
     std::uniform_real_distribution<> dis(0.0, 1.0);
     ofs.open("output/beforefrozen_Cellnumber_and_stateoftheirneighbours.txt", std::ofstream::out | std::ofstream::app);	    	
     
-
     while( time < max_time)
     {
         if (a0>0)
@@ -774,6 +773,7 @@ void Gillespie_Model(void)
                 
             }
 
+	    ofs.open("output/freezing_times_alpha" + std::to_string(alpha) + ".txt"); 
             
             for (int j=0;j<number_of_cells;j++)
             { 
@@ -783,22 +783,22 @@ void Gillespie_Model(void)
                 {
                     pCell_2->custom_data["fvec"]=1;
                   
-                    if (a0>0)
-                    {
-                    pCell_2->custom_data["Freezing_time"]=time-(log(r[0])/a0); 
-
+                    if (a0>0){
+			pCell_2->custom_data["Freezing_time"]=time-(log(r[0])/a0); 
+			ofs << pCell_2->custom_data["Freezing_time"] << std::endl;
                     }
                     break;
                     
                     
                 }
             }
+	    ofs.close();
 	// ofs.open("output/afterfrozen_Cellnumber_and_stateoftheirneighbours.txt", std::ofstream::out | std::ofstream::app);	  
 
         // if a0=0, then all the cells are frozen
         if (a0==0)
         {
-	   
+	   ofs.close();
     	   ofs.open("output/afterfrozen_Cellnumber_and_stateoftheirneighbours.txt", std::ofstream::out | std::ofstream::app);	    	
            // If all the cells are frozen, we are interested in looking at the distances between
            // the cell and their neighboring cell 
@@ -823,6 +823,7 @@ void Gillespie_Model(void)
 		ofs.close();
 	   return;
         }
+
         else
         {
 			// Estimates the time of next reaction based on random variable
@@ -843,7 +844,7 @@ void Gillespie_Model(void)
     }//end if (a0>0)
     
 }//end while
-    
+    ofs.close(); //We will close our freezing_time output file here    
     return;
 }
 // Check the number of frozen in the tissue 
