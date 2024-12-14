@@ -779,7 +779,10 @@ void Gillespie_Model(void)
             { 
                 Cell* pCell_2 =(*all_cells)[j];
 				// Find the next reaction location based on random variable
-                if (r[1]*a0<=s[j])
+                if (pCell_2->custom_data["fvec" == 0]) {
+		r[0] = dis(gen);
+		r[1] = dis(gen);
+		if (r[1]*a0<=s[j])
                 {
                     pCell_2->custom_data["fvec"]=1;
                   
@@ -787,10 +790,11 @@ void Gillespie_Model(void)
 			pCell_2->custom_data["Freezing_time"]=time-(log(r[0])/a0); 
 			freezing_times << pCell_2->custom_data["Freezing_time"] << std::endl;
                     }
-                    break;
+                   // break;
                     
                     
                 }
+		}
             }
 	    freezing_times.close();
 	// ofs.open("output/afterfrozen_Cellnumber_and_stateoftheirneighbours.txt", std::ofstream::out | std::ofstream::app);	  
