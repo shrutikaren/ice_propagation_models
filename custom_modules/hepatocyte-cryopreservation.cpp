@@ -679,7 +679,7 @@ bool connectionsbroken(Cell *pCell, const std::vector<int> &neighbours){
 //as a function of dimensionless time. 
 void Gillespie_Model(void)
 {
-    std::ofstream ofs, freezing_times;
+    std::ofstream ofs, tau_values, freezing_times;
 	//Number of cells in the tissue
     int number_of_cells = (*all_cells).size();
     double r [2]  ; // The two random variables that we will require 
@@ -774,27 +774,28 @@ void Gillespie_Model(void)
             }
 
 	    freezing_times.open("output/freezing_times_alpha" + std::to_string(alpha) + ".txt"); 
-            
+           //  tau_values.open("output/tau_values_alpha" + std::to_string(alpha) + ".txt");
+
             for (int j=0;j<number_of_cells;j++)
             { 
                 Cell* pCell_2 =(*all_cells)[j];
 				// Find the next reaction location based on random variable
-                if (pCell_2->custom_data["fvec" == 0]) {
-		r[0] = dis(gen);
-		r[1] = dis(gen);
+                //if (pCell_2->custom_data["fvec" == 0]) {
+		//r[0] = dis(gen);
+		//r[1] = dis(gen);
 		if (r[1]*a0<=s[j])
                 {
                     pCell_2->custom_data["fvec"]=1;
                   
                     if (a0>0){
 			pCell_2->custom_data["Freezing_time"]=time-(log(r[0])/a0); 
-			freezing_times << pCell_2->custom_data["Freezing_time"] << std::endl;
-                    }
-                   // break;
+			freezing_times << pCell_2->custom_data["Freezing_time"] << std::endl;                    	
+		    }
+                    break;
                     
                     
                 }
-		}
+		//}
             }
 	    freezing_times.close();
 	// ofs.open("output/afterfrozen_Cellnumber_and_stateoftheirneighbours.txt", std::ofstream::out | std::ofstream::app);	  

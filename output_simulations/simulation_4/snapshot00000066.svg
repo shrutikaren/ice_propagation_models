@@ -25,8 +25,8 @@
   </g>
   <g id="cells">
    <g id="cell0">
-  <circle cx="250" cy="250" r="10.0998" stroke-width="0.5" stroke="red" fill="red"/>
-  <circle cx="250" cy="250" r="6.06472" stroke-width="0.5" stroke="red" fill="red"/>
+  <circle cx="250" cy="250" r="10.5504" stroke-width="0.5" stroke="green" fill="green"/>
+  <circle cx="250" cy="250" r="6.33529" stroke-width="0.5" stroke="red" fill="green"/>
    </g>
    <g id="cell1">
   <circle cx="230.842" cy="240.923" r="10.0998" stroke-width="0.5" stroke="red" fill="red"/>
@@ -37,8 +37,8 @@
   <circle cx="263.426" cy="266.406" r="6.06472" stroke-width="0.5" stroke="red" fill="red"/>
    </g>
    <g id="cell3">
-  <circle cx="244.892" cy="229.425" r="10.0998" stroke-width="0.5" stroke="red" fill="red"/>
-  <circle cx="244.892" cy="229.425" r="6.06472" stroke-width="0.5" stroke="red" fill="red"/>
+  <circle cx="244.892" cy="229.425" r="10.4875" stroke-width="0.5" stroke="green" fill="green"/>
+  <circle cx="244.892" cy="229.425" r="6.29754" stroke-width="0.5" stroke="red" fill="green"/>
    </g>
    <g id="cell4">
   <circle cx="245.806" cy="270.781" r="10.0998" stroke-width="0.5" stroke="red" fill="red"/>
@@ -121,7 +121,7 @@
   </text>
   <text x="12.5" y="522.5"
    font-family="Arial" font-size="9.375" fill="black" >
-   0 days, 0 hours, 0 minutes, and 4.6678 seconds
+   0 days, 0 hours, 0 minutes, and 3.9448 seconds
   </text>
   <rect x="0" y="35" width="500" height="500" stroke-width="1" stroke="rgb(0,0,0)" fill="none"/>
 </svg>
