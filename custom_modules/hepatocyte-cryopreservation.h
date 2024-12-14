@@ -23,6 +23,8 @@ void setup_tissue();
 
 void Gillespie_Model();
 void check_tissue_freezing_state();
+double distance_between(Cell* pCell_1, Cell* pCell_2);
+bool connectionsbroken(Cell* pCell, const std::vector<int> &neighbours);
 
 std::vector< int>  populate_my_neighborhood(Cell* );
 
